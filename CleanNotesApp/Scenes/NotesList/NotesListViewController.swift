@@ -32,37 +32,37 @@ class NotesListViewController: UIViewController {
     // MARK: Setup
     
     private func setup() {
-        let viewController = self
-        let interactor = NotesListInteractor()
-        let presenter = NotesListPresenter()
-        let router = NotesListRouter()
-        
-        viewController.interactor = interactor
-        viewController.router = router
-        interactor.presenter = presenter
-        presenter.viewController = viewController
-        router.viewController = viewController
-        router.dataStore = interactor
+//        let viewController = self
+//        let interactor = NotesListInteractor()
+//        let presenter = NotesListPresenter()
+//        let router = NotesListRouter()
+//
+//        viewController.interactor = interactor
+//        viewController.router = router
+//        interactor.presenter = presenter
+//        presenter.viewController = viewController
+//        router.viewController = viewController
+//        router.dataStore = interactor
     }
     
     // MARK: Routing
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let scene = segue.identifier {
-            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-            if let router = router, router.responds(to: selector) {
-                router.perform(selector, with: segue)
-            }
-        }
-    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let scene = segue.identifier {
+//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+//            if let router = router, router.responds(to: selector) {
+//                router.perform(selector, with: segue)
+//            }
+//        }
+//    }
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
 //        fetchNotes()
-        notesListTableView.delegate = self
-        title = ""
+//        notesListTableView.register(UINib(nibName: "noteCell", bundle: nil), forCellReuseIdentifier: "noteCell")
+//        title = "Notes List"
     }
     
     // MARK: Do something
@@ -70,8 +70,8 @@ class NotesListViewController: UIViewController {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func fetchNotes() {
-        let request = NotesList.Something.Request()
-        interactor?.fetchNotes(request: request)
+//        let request = NotesList.Something.Request()
+//        interactor?.fetchNotes(request: request)
     }
 }
 
@@ -81,18 +81,33 @@ extension NotesListViewController: NotesListDisplayLogic {
     }
 }
 
+
+
 extension NotesListViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let noteCell = tableView.dequeueReusableCell(withIdentifier: "noteCellId", for: indexPath)
+        let noteCell = tableView.dequeueReusableCell(
+            withIdentifier: "noteCell", for: indexPath
+        ) as! NoteCell
+       
+        
         return noteCell
     }
     
-}
-
-extension NotesListViewController: UITableViewDelegate {
+    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //        if let rocketDetail = dataSourceRockets?[indexPath.row] {
+    //            sendRocketDetail(rocket: rocketDetail)
+    //        }
+    //    }
+    }
     
-}
+    
+    extension NotesListViewController: UITableViewDelegate {
+        
+        
+    }
+

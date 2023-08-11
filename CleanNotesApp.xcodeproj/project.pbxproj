@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EBDFCC0E2A861CFB00BA901C /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFCC0D2A861CFB00BA901C /* NoteCell.swift */; };
 		EBECDE572A85EE4C00C71549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECDE562A85EE4C00C71549 /* AppDelegate.swift */; };
 		EBECDE592A85EE4C00C71549 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECDE582A85EE4C00C71549 /* SceneDelegate.swift */; };
 		EBECDE5E2A85EE4C00C71549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBECDE5C2A85EE4C00C71549 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EBDFCC0D2A861CFB00BA901C /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		EBECDE532A85EE4C00C71549 /* CleanNotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanNotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBECDE562A85EE4C00C71549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBECDE582A85EE4C00C71549 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +61,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EBDFCC0A2A861AD900BA901C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EBDFCC0D2A861CFB00BA901C /* NoteCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EBECDE4A2A85EE4B00C71549 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +88,7 @@
 		EBECDE552A85EE4C00C71549 /* CleanNotesApp */ = {
 			isa = PBXGroup;
 			children = (
+				EBDFCC0A2A861AD900BA901C /* Views */,
 				EBECDE6A2A85F19700C71549 /* Scenes */,
 				EBECDE562A85EE4C00C71549 /* AppDelegate.swift */,
 				EBECDE582A85EE4C00C71549 /* SceneDelegate.swift */,
@@ -92,8 +103,8 @@
 		EBECDE6A2A85F19700C71549 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				EBECDE6C2A85F1C900C71549 /* NoteDetails */,
 				EBECDE6B2A85F1B200C71549 /* NotesList */,
+				EBECDE6C2A85F1C900C71549 /* NoteDetails */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -207,6 +218,7 @@
 				EBECDE782A85F22D00C71549 /* NoteDetailsInteractor.swift in Sources */,
 				EBECDE802A85F24F00C71549 /* NotesListWorker.swift in Sources */,
 				EBECDE772A85F22D00C71549 /* NoteDetailsViewController.swift in Sources */,
+				EBDFCC0E2A861CFB00BA901C /* NoteCell.swift in Sources */,
 				EBECDE842A85F24F00C71549 /* NotesListInteractor.swift in Sources */,
 				EBECDE732A85F22D00C71549 /* NoteDetailsPresenter.swift in Sources */,
 			);
