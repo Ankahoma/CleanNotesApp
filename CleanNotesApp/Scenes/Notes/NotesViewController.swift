@@ -7,15 +7,15 @@
 
 import UIKit
 
-protocol NotesListDisplayLogic: AnyObject {
-    func displayNotesList(viewModel: NotesList.Something.ViewModel)
+protocol NotesDisplayLogic: AnyObject {
+    func displayNotes(viewModel: Notes.GetNotes.ViewModel)
 }
 
-class NotesListViewController: UIViewController {
-    @IBOutlet var notesListTableView: UITableView!
+class NotesViewController: UIViewController {
+    @IBOutlet var notesTableView: UITableView!
     
-    private var interactor: NotesListBusinessLogic?
-    var router: (NSObjectProtocol & NotesListRoutingLogic & NotesListDataPassing)?
+    private var interactor: NotesBusinessLogic?
+    var router: (NSObjectProtocol & NotesRoutingLogic & NotesDataPassing)?
     
     // MARK: Object lifecycle
     
@@ -32,17 +32,17 @@ class NotesListViewController: UIViewController {
     // MARK: Setup
     
     private func setup() {
-//        let viewController = self
-//        let interactor = NotesListInteractor()
-//        let presenter = NotesListPresenter()
-//        let router = NotesListRouter()
-//
-//        viewController.interactor = interactor
-//        viewController.router = router
-//        interactor.presenter = presenter
-//        presenter.viewController = viewController
-//        router.viewController = viewController
-//        router.dataStore = interactor
+        let viewController = self
+        let interactor = NotesInteractor()
+        let presenter = NotesPresenter()
+        let router = NotesRouter()
+
+        viewController.interactor = interactor
+        viewController.router = router
+        interactor.presenter = presenter
+        presenter.viewController = viewController
+        router.viewController = viewController
+        router.dataStore = interactor
     }
     
     // MARK: Routing
@@ -60,9 +60,8 @@ class NotesListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        fetchNotes()
-//        notesListTableView.register(UINib(nibName: "noteCell", bundle: nil), forCellReuseIdentifier: "noteCell")
-//        title = "Notes List"
+        fetchNotes()
+
     }
     
     // MARK: Do something
@@ -75,15 +74,15 @@ class NotesListViewController: UIViewController {
     }
 }
 
-extension NotesListViewController: NotesListDisplayLogic {
-    func displayNotesList(viewModel: NotesList.Something.ViewModel) {
+extension NotesViewController: NotesDisplayLogic {
+    func displayNotes(viewModel: Notes.GetNotes.ViewModel) {
         //nameTextField.text = viewModel.name
     }
 }
 
 
 
-extension NotesListViewController: UITableViewDataSource {
+extension NotesViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 3
@@ -93,21 +92,15 @@ extension NotesListViewController: UITableViewDataSource {
         let noteCell = tableView.dequeueReusableCell(
             withIdentifier: "noteCell", for: indexPath
         ) as! NoteCell
-       
+        
         
         return noteCell
     }
+}
     
-    //    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    //        if let rocketDetail = dataSourceRockets?[indexPath.row] {
-    //            sendRocketDetail(rocket: rocketDetail)
-    //        }
-    //    }
-    }
-    
-    
-    extension NotesListViewController: UITableViewDelegate {
-        
-        
-    }
+//    extension NotesViewController: UITableViewDelegate {
+//
+//
+//    }
+//
 

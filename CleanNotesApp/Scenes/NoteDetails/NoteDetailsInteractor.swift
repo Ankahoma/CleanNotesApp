@@ -7,7 +7,7 @@
 import UIKit
 
 protocol NoteDetailsBusinessLogic {
-    func doSomething(request: NoteDetails.Something.Request)
+    func doSomething(request: NoteDetails.GetNoteDetails.Request)
 }
 
 protocol NoteDetailsDataStore {
@@ -16,16 +16,13 @@ protocol NoteDetailsDataStore {
 
 class NoteDetailsInteractor: NoteDetailsBusinessLogic, NoteDetailsDataStore {
     var presenter: NoteDetailsPresentationLogic?
-    var worker: NoteDetailsWorker?
     //var name: String = ""
     
     // MARK: Do something
     
-    func doSomething(request: NoteDetails.Something.Request) {
-        worker = NoteDetailsWorker()
-        worker?.doSomeWork()
+    func doSomething(request: NoteDetails.GetNoteDetails.Request) {
         
-        let response = NoteDetails.Something.Response()
+        let response = NoteDetails.GetNoteDetails.Response()
         presenter?.presentSomething(response: response)
     }
 }

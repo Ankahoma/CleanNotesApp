@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NoteDetailsPresentationLogic {
-    func presentSomething(response: NoteDetails.Something.Response)
+    func presentSomething(response: NoteDetails.GetNoteDetails.Response)
 }
 
 class NoteDetailsPresenter: NoteDetailsPresentationLogic {
@@ -16,8 +16,8 @@ class NoteDetailsPresenter: NoteDetailsPresentationLogic {
     
     // MARK: Do something
     
-    func presentSomething(response: NoteDetails.Something.Response) {
-        let viewModel = NoteDetails.Something.ViewModel()
+    func presentSomething(response: NoteDetails.GetNoteDetails.Response) {
+        let viewModel = NoteDetails.GetNoteDetails.ViewModel()
         viewController?.displayNotesList(viewModel: viewModel)
     }
 }

@@ -7,20 +7,20 @@
 
 import UIKit
 
-@objc protocol NotesListRoutingLogic
+@objc protocol NotesRoutingLogic
 {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
 }
 
-protocol NotesListDataPassing
+protocol NotesDataPassing
 {
-  var dataStore: NotesListDataStore? { get }
+  var dataStore: NotesDataStore? { get }
 }
 
-class NotesListRouter: NSObject, NotesListRoutingLogic, NotesListDataPassing
+class NotesRouter: NSObject, NotesRoutingLogic, NotesDataPassing
 {
-  weak var viewController: NotesListViewController?
-  var dataStore: NotesListDataStore?
+  weak var viewController: NotesViewController?
+  var dataStore: NotesDataStore?
   
   // MARK: Routing
   

@@ -27,7 +27,7 @@
         <!--Notes-->
         <scene sceneID="3m6-fi-YMk">
             <objects>
-                <viewController id="hvu-it-hqv" customClass="NotesListViewController" customModule="CleanNotesApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hvu-it-hqv" customClass="NotesViewController" customModule="CleanNotesApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="V2U-ET-EFc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -35,53 +35,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RfM-Yi-T9a">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="noteCell" rowHeight="100" id="vDS-f1-gZm" customClass="NoteCell" customModule="CleanNotesApp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="393" height="100"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vDS-f1-gZm" id="6Ls-wY-gau">
-                                            <rect key="frame" x="0.0" y="0.0" width="393" height="100"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EEc-I3-mVn">
-                                                    <rect key="frame" x="20" y="11.000000000000002" width="353" height="27.666666666666671"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hay-i2-e1O">
-                                                    <rect key="frame" x="26" y="58.666666666666657" width="36" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Body" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QJ3-nY-iuV">
-                                                    <rect key="frame" x="77" y="58.666666666666664" width="296" height="21.333333333333336"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="QJ3-nY-iuV" firstAttribute="top" secondItem="EEc-I3-mVn" secondAttribute="bottom" constant="20" id="6f5-4V-lwO"/>
-                                                <constraint firstItem="EEc-I3-mVn" firstAttribute="top" secondItem="6Ls-wY-gau" secondAttribute="topMargin" id="N9u-Em-WZk"/>
-                                                <constraint firstItem="Hay-i2-e1O" firstAttribute="top" secondItem="EEc-I3-mVn" secondAttribute="bottom" constant="20" id="OSJ-GO-vb9"/>
-                                                <constraint firstAttribute="trailing" secondItem="Hay-i2-e1O" secondAttribute="trailing" constant="331" id="QYL-lN-Pcx"/>
-                                                <constraint firstItem="EEc-I3-mVn" firstAttribute="leading" secondItem="6Ls-wY-gau" secondAttribute="leadingMargin" id="Xnx-vY-lvE"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="QJ3-nY-iuV" secondAttribute="bottom" constant="9" id="fYP-fo-bOC"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="EEc-I3-mVn" secondAttribute="trailing" id="iBZ-VU-Ty4"/>
-                                                <constraint firstItem="QJ3-nY-iuV" firstAttribute="leading" secondItem="Hay-i2-e1O" secondAttribute="trailing" constant="15" id="isx-ik-7gW"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="QJ3-nY-iuV" secondAttribute="trailing" id="qLK-XT-mQL"/>
-                                                <constraint firstItem="Hay-i2-e1O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Ls-wY-gau" secondAttribute="leadingMargin" id="tmw-mg-c9l"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="bodyLabel" destination="QJ3-nY-iuV" id="g1A-6e-bXv"/>
-                                            <outlet property="dateLabel" destination="Hay-i2-e1O" id="N1i-dr-6zL"/>
-                                            <outlet property="titleLabel" destination="EEc-I3-mVn" id="eUt-cT-qBD"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="hvu-it-hqv" id="LCm-e3-u5G"/>
                                     <outlet property="delegate" destination="hvu-it-hqv" id="qKg-h3-mzJ"/>
@@ -98,6 +51,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="7P0-Oj-MY1"/>
+                    <connections>
+                        <outlet property="notesTableView" destination="RfM-Yi-T9a" id="I7i-oH-kOS"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OHY-YI-rk1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

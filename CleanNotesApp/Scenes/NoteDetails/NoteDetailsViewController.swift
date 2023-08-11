@@ -8,7 +8,7 @@
 import UIKit
 
 protocol NoteDetailsDisplayLogic: AnyObject {
-    func displayNotesList(viewModel: NoteDetails.Something.ViewModel)
+    func displayNotesList(viewModel: NoteDetails.GetNoteDetails.ViewModel)
 }
 
 class NoteDetailsViewController: UIViewController {
@@ -66,13 +66,13 @@ class NoteDetailsViewController: UIViewController {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func doSomething() {
-        let request = NoteDetails.Something.Request()
+        let request = NoteDetails.GetNoteDetails.Request()
         interactor?.doSomething(request: request)
     }
 }
 
 extension NoteDetailsViewController: NoteDetailsDisplayLogic {
-    func displayNotesList(viewModel: NoteDetails.Something.ViewModel) {
+    func displayNotesList(viewModel: NoteDetails.GetNoteDetails.ViewModel) {
         //nameTextField.text = viewModel.name
     }
 }
