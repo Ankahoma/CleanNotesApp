@@ -10,7 +10,7 @@
 		EBDFCC312A86462000BA901C /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFCC2F2A86462000BA901C /* NoteCell.swift */; };
 		EBDFCC322A86462000BA901C /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDFCC302A86462000BA901C /* NoteCell.xib */; };
 		EBDFCC342A864C5800BA901C /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFCC332A864C5800BA901C /* NoteModel.swift */; };
-		EBE85ACD2A869C6500751330 /* NotesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE85ACC2A869C6500751330 /* NotesWorker.swift */; };
+		EBE85AD22A8787E800751330 /* NotesStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBE85AD12A8787E800751330 /* NotesStorageService.swift */; };
 		EBECDE572A85EE4C00C71549 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECDE562A85EE4C00C71549 /* AppDelegate.swift */; };
 		EBECDE592A85EE4C00C71549 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBECDE582A85EE4C00C71549 /* SceneDelegate.swift */; };
 		EBECDE5E2A85EE4C00C71549 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EBECDE5C2A85EE4C00C71549 /* Main.storyboard */; };
@@ -32,7 +32,7 @@
 		EBDFCC2F2A86462000BA901C /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		EBDFCC302A86462000BA901C /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		EBDFCC332A864C5800BA901C /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
-		EBE85ACC2A869C6500751330 /* NotesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesWorker.swift; sourceTree = "<group>"; };
+		EBE85AD12A8787E800751330 /* NotesStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesStorageService.swift; sourceTree = "<group>"; };
 		EBECDE532A85EE4C00C71549 /* CleanNotesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanNotesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EBECDE562A85EE4C00C71549 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EBECDE582A85EE4C00C71549 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +96,14 @@
 			path = Note;
 			sourceTree = "<group>";
 		};
+		EBE85AD02A8787B800751330 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EBE85AD12A8787E800751330 /* NotesStorageService.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		EBECDE4A2A85EE4B00C71549 = {
 			isa = PBXGroup;
 			children = (
@@ -131,6 +139,7 @@
 		EBECDE6A2A85F19700C71549 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				EBE85AD02A8787B800751330 /* Common */,
 				EBECDE6B2A85F1B200C71549 /* Notes */,
 				EBECDE6C2A85F1C900C71549 /* NoteDetails */,
 			);
@@ -145,7 +154,6 @@
 				EBECDE7C2A85F24F00C71549 /* NotesModels.swift */,
 				EBECDE7D2A85F24F00C71549 /* NotesViewController.swift */,
 				EBECDE7E2A85F24F00C71549 /* NotesInteractor.swift */,
-				EBE85ACC2A869C6500751330 /* NotesWorker.swift */,
 			);
 			path = Notes;
 			sourceTree = "<group>";
@@ -241,7 +249,6 @@
 				EBDFCC342A864C5800BA901C /* NoteModel.swift in Sources */,
 				EBECDE822A85F24F00C71549 /* NotesModels.swift in Sources */,
 				EBECDE592A85EE4C00C71549 /* SceneDelegate.swift in Sources */,
-				EBE85ACD2A869C6500751330 /* NotesWorker.swift in Sources */,
 				EBECDE762A85F22D00C71549 /* NoteDetailsModels.swift in Sources */,
 				EBECDE832A85F24F00C71549 /* NotesViewController.swift in Sources */,
 				EBECDE782A85F22D00C71549 /* NoteDetailsInteractor.swift in Sources */,
@@ -249,6 +256,7 @@
 				EBDFCC312A86462000BA901C /* NoteCell.swift in Sources */,
 				EBECDE842A85F24F00C71549 /* NotesInteractor.swift in Sources */,
 				EBECDE732A85F22D00C71549 /* NoteDetailsPresenter.swift in Sources */,
+				EBE85AD22A8787E800751330 /* NotesStorageService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
