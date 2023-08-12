@@ -4,7 +4,7 @@
 //
 //  Created by Анна Вертикова on 10.08.2023.
 
-
+import Foundation
 import UIKit
 
 protocol NotesDisplayLogic: AnyObject {
@@ -36,7 +36,7 @@ class NotesViewController: UIViewController {
         let interactor = NotesInteractor()
         let presenter = NotesPresenter()
         let router = NotesRouter()
-
+        
         viewController.interactor = interactor
         viewController.router = router
         interactor.presenter = presenter
@@ -46,22 +46,23 @@ class NotesViewController: UIViewController {
     }
     
     // MARK: Routing
-//
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let scene = segue.identifier {
-//            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-//            if let router = router, router.responds(to: selector) {
-//                router.perform(selector, with: segue)
-//            }
-//        }
-//    }
+    //
+        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+            if let scene = segue.identifier {
+                let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+                if let router = router, router.responds(to: selector) {
+                    router.perform(selector, with: segue)
+                }
+            }
+        }
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNotes()
-
+//      fetchNotes()
+        notesTableView.register(UINib(nibName: "NoteCell", bundle: nil), forCellReuseIdentifier: NoteCell.cellIdentifier)
+        
     }
     
     // MARK: Do something
@@ -69,13 +70,14 @@ class NotesViewController: UIViewController {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func fetchNotes() {
-//        let request = NotesList.Something.Request()
-//        interactor?.fetchNotes(request: request)
+        //        let request = NotesList.Something.Request()
+        //        interactor?.fetchNotes(request: request)
     }
 }
 
 extension NotesViewController: NotesDisplayLogic {
     func displayNotes(viewModel: Notes.GetNotes.ViewModel) {
+        
         //nameTextField.text = viewModel.name
     }
 }
@@ -89,18 +91,19 @@ extension NotesViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let noteCell = tableView.dequeueReusableCell(
-            withIdentifier: "noteCell", for: indexPath
-        ) as! NoteCell
-        
+        guard let noteCell = tableView.dequeueReusableCell(
+            withIdentifier: NoteCell.cellIdentifier, for: indexPath) as? NoteCell
+        else { return UITableViewCell() }
         
         return noteCell
     }
 }
-    
-//    extension NotesViewController: UITableViewDelegate {
-//
-//
-//    }
-//
+
+    extension NotesViewController: UITableViewDelegate {
+       
+            func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+                return 100.0
+            }
+    }
+
 

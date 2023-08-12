@@ -12,9 +12,9 @@ protocol NotesBusinessLogic {
   func fetchNotes(request: Notes.GetNotes.Request)
 }
 
-//protocol NotesDataStore {
-////  var defaultNote: NoteModel { get }
-//}
+protocol NotesDataStore {
+//  var defaultNote: NoteModel { get }
+}
 
 class NotesInteractor {
     var worker: NotesStorageService?
@@ -30,7 +30,7 @@ extension NotesInteractor: NotesBusinessLogic {
     }
   }
  
-//extension NotesInteractor: NotesDataStore {
-//
-//    }
+extension NotesInteractor: NotesDataStore {
+
+    }
 
