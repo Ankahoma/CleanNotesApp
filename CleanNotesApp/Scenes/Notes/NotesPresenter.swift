@@ -9,6 +9,7 @@ import UIKit
 
 protocol NotesPresentationLogic {
   func presentNotes(response: Notes.GetNotes.Response)
+  
 }
 
 class NotesPresenter {
@@ -17,6 +18,7 @@ class NotesPresenter {
 
 extension NotesPresenter: NotesPresentationLogic {
     func presentNotes(response: Notes.GetNotes.Response) {
+        
       let viewModel = Notes.GetNotes.ViewModel()
       viewController?.displayNotes(viewModel: viewModel)
     }

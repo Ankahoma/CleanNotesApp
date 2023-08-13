@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EB25AEA32A88F4C4006CE7A1 /* DataAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB25AEA22A88F4C4006CE7A1 /* DataAdapter.swift */; };
 		EBDFCC312A86462000BA901C /* NoteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFCC2F2A86462000BA901C /* NoteCell.swift */; };
 		EBDFCC322A86462000BA901C /* NoteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EBDFCC302A86462000BA901C /* NoteCell.xib */; };
 		EBDFCC342A864C5800BA901C /* NoteModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBDFCC332A864C5800BA901C /* NoteModel.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EB25AEA22A88F4C4006CE7A1 /* DataAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataAdapter.swift; sourceTree = "<group>"; };
 		EBDFCC2F2A86462000BA901C /* NoteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCell.swift; sourceTree = "<group>"; };
 		EBDFCC302A86462000BA901C /* NoteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoteCell.xib; sourceTree = "<group>"; };
 		EBDFCC332A864C5800BA901C /* NoteModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModel.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				EBE85AD12A8787E800751330 /* NotesStorageService.swift */,
+				EB25AEA22A88F4C4006CE7A1 /* DataAdapter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				EBDFCC342A864C5800BA901C /* NoteModel.swift in Sources */,
 				EBECDE822A85F24F00C71549 /* NotesModels.swift in Sources */,
 				EBECDE592A85EE4C00C71549 /* SceneDelegate.swift in Sources */,
+				EB25AEA32A88F4C4006CE7A1 /* DataAdapter.swift in Sources */,
 				EBECDE762A85F22D00C71549 /* NoteDetailsModels.swift in Sources */,
 				EBECDE832A85F24F00C71549 /* NotesViewController.swift in Sources */,
 				EBECDE782A85F22D00C71549 /* NoteDetailsInteractor.swift in Sources */,

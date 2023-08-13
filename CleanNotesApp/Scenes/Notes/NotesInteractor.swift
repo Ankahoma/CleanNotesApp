@@ -9,28 +9,35 @@ import UIKit
 
 
 protocol NotesBusinessLogic {
-  func fetchNotes(request: Notes.GetNotes.Request)
+    func fetchNotes(request: Notes.GetNotes.Request)
+    func saveNote(request: Notes.GetNotes.Request)
 }
 
 protocol NotesDataStore {
-//  var defaultNote: NoteModel { get }
+    //  var defaultNote: NoteModel { get }
 }
 
 class NotesInteractor {
     var worker: NotesStorageService?
     var presenter: NotesPresentationLogic?
-  
+    
 }
- 
+
 extension NotesInteractor: NotesBusinessLogic {
+    func saveNote(request: Notes.GetNotes.Request) {
+        // worker.saveNotes
+    }
+    
     
     func fetchNotes(request: Notes.GetNotes.Request) {
-      let response = Notes.GetNotes.Response()
-      presenter?.presentNotes(response: response)
+        worker = NotesStorageService()
+        worker?.fetchNotes(request: request)
+        var response: Notes.GetNotes.Response!
+        presenter?.presentNotes(response: response)
     }
-  }
- 
-extension NotesInteractor: NotesDataStore {
+}
 
-    }
+extension NotesInteractor: NotesDataStore {
+    
+}
 

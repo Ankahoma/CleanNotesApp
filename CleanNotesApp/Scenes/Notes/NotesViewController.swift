@@ -14,6 +14,7 @@ protocol NotesDisplayLogic: AnyObject {
 class NotesViewController: UIViewController {
     @IBOutlet var notesTableView: UITableView!
     
+//    private var dataToDisplay: [[String]] = [[]]
     private var interactor: NotesBusinessLogic?
     var router: (NSObjectProtocol & NotesRoutingLogic & NotesDataPassing)?
     
@@ -47,21 +48,21 @@ class NotesViewController: UIViewController {
     
     // MARK: Routing
     //
-        override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            if let scene = segue.identifier {
-                let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
-                if let router = router, router.responds(to: selector) {
-                    router.perform(selector, with: segue)
-                }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let scene = segue.identifier {
+            let selector = NSSelectorFromString("routeTo\(scene)WithSegue:")
+            if let router = router, router.responds(to: selector) {
+                router.perform(selector, with: segue)
             }
         }
+    }
     
     // MARK: View lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//      fetchNotes()
-        notesTableView.register(UINib(nibName: "NoteCell", bundle: nil), forCellReuseIdentifier: NoteCell.cellIdentifier)
+        //      fetchNotes()
+        notesTableView.register(UINib(nibName: "NoteCell", bundle: nil), forCellReuseIdentifier: NoteCell.identifier)
         
     }
     
@@ -70,8 +71,8 @@ class NotesViewController: UIViewController {
     //@IBOutlet weak var nameTextField: UITextField!
     
     func fetchNotes() {
-        //        let request = NotesList.Something.Request()
-        //        interactor?.fetchNotes(request: request)
+        let request = Notes.GetNotes.Request()
+        interactor?.fetchNotes(request: request)
     }
 }
 
@@ -85,25 +86,24 @@ extension NotesViewController: NotesDisplayLogic {
 
 
 extension NotesViewController: UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        //        return dataToDisplay?.count
         return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let noteCell = tableView.dequeueReusableCell(
-            withIdentifier: NoteCell.cellIdentifier, for: indexPath) as? NoteCell
+            withIdentifier: NoteCell.identifier, for: indexPath) as? NoteCell
         else { return UITableViewCell() }
         
         return noteCell
     }
 }
 
-    extension NotesViewController: UITableViewDelegate {
-       
-            func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-                return 100.0
-            }
+extension NotesViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
+}
 
 

@@ -3,7 +3,7 @@
 //  CleanNotesApp
 //
 //  Created by Анна Вертикова on 11.08.2023.
-
+import Foundation
 
 enum Notes {
     
@@ -16,7 +16,7 @@ enum Notes {
     }
       
     struct ViewModel {
-        var notes: [NoteModel]?
+        var notes: [[String]]?
     }
   }
 }

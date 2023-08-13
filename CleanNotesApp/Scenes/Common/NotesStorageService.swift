@@ -11,10 +11,11 @@ import UIKit
 protocol NotesStorageLogic {
     func saveNote(_ note: NoteModel)
     func removeNote(_ indexPath: IndexPath)
-    func fetchNotes() -> [NoteModel]
+    func fetchNotes(request: Notes.GetNotes.Request)
 }
 
 class NotesStorageService {
+    var presenter: NotesPresentationLogic?
     private let userDefaults = UserDefaults.standard
     private let notesKey = "notes"
     var defaultNote: NoteModel {
@@ -35,17 +36,18 @@ extension NotesStorageService: NotesStorageLogic {
         userDefaults.set(localTempStorage, forKey:  notesKey)
     }
     
+
     
-    func fetchNotes() -> [NoteModel] {
-        
+    func fetchNotes(request: Notes.GetNotes.Request) {
+        var response: Notes.GetNotes.Response!
         guard let data = userDefaults.object(forKey: notesKey) as? Data
-        else { return [defaultNote] }
+        else {return} // обработать ошибку
+        var notes : [NoteModel] = (try? JSONDecoder().decode([NoteModel].self, from: data)) ?? []
+        response.notes = notes.isEmpty ? notes : [defaultNote]
         
-        let notes = (try? JSONDecoder().decode([NoteModel].self, from: data)) ?? []
-        return notes.isEmpty ? [defaultNote] : notes
+        presenter = NotesPresenter()
+        presenter?.presentNotes(response: response)
+        
     }
-    
-    
-    
-    
+ 
 }

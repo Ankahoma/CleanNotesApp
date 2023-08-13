@@ -15,7 +15,7 @@ enum NoteDetails {
         }
         
         struct ViewModel {
-            var note: NoteModel?
+            var note: [String]?
         }
     }
 }

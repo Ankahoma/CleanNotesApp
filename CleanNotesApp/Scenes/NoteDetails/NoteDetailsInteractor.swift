@@ -22,7 +22,7 @@ class NoteDetailsInteractor: NoteDetailsBusinessLogic, NoteDetailsDataStore {
     
     func doSomething(request: NoteDetails.GetNoteDetails.Request) {
         
-        let response = NoteDetails.GetNoteDetails.Response()
-        presenter?.presentSomething(response: response)
+//        let response = NoteDetails.GetNoteDetails.Response()
+//        presenter?.presentSomething(response: response)
     }
 }

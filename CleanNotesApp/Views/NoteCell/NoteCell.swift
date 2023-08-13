@@ -9,7 +9,7 @@ import UIKit
 
 class NoteCell: UITableViewCell {
     
-    static let cellIdentifier = "NoteCell"
+    static let identifier = "NoteCell"
     
     @IBOutlet weak var bodyLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
