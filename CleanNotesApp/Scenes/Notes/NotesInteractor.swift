@@ -33,7 +33,11 @@ extension NotesInteractor: NotesBusinessLogic {
         worker = NotesStorageService()
         worker?.fetchNotes(request: request)
         var response: Notes.GetNotes.Response!
-        presenter?.presentNotes(response: response)
+//        print("INTERACTOR")
+//        print(response.notes)
+//        print("INTERACTOR")
+        
+//        presenter?.presentNotes(response: response)
     }
 }
 

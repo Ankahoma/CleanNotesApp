@@ -14,13 +14,14 @@ protocol NotesDisplayLogic: AnyObject {
 class NotesViewController: UIViewController {
     @IBOutlet var notesTableView: UITableView!
     
-//    private var dataToDisplay: [[String]] = [[]]
+    private var notesToDisplay: [NoteModel] = []
     private var interactor: NotesBusinessLogic?
     var router: (NSObjectProtocol & NotesRoutingLogic & NotesDataPassing)?
     
     // MARK: Object lifecycle
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
     }
@@ -61,7 +62,7 @@ class NotesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //      fetchNotes()
+        self.getNotesData()
         notesTableView.register(UINib(nibName: "NoteCell", bundle: nil), forCellReuseIdentifier: NoteCell.identifier)
         
     }
@@ -70,7 +71,7 @@ class NotesViewController: UIViewController {
     
     //@IBOutlet weak var nameTextField: UITextField!
     
-    func fetchNotes() {
+    func getNotesData() {
         let request = Notes.GetNotes.Request()
         interactor?.fetchNotes(request: request)
     }
@@ -79,6 +80,9 @@ class NotesViewController: UIViewController {
 extension NotesViewController: NotesDisplayLogic {
     func displayNotes(viewModel: Notes.GetNotes.ViewModel) {
         
+        print("VCONTROLLER")
+        print(viewModel.notes)
+        print("VCONTROLLER")
         //nameTextField.text = viewModel.name
     }
 }
@@ -88,7 +92,7 @@ extension NotesViewController: NotesDisplayLogic {
 extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return dataToDisplay?.count
-        return 3
+        return notesToDisplay.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

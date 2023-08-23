@@ -39,11 +39,12 @@ extension NotesStorageService: NotesStorageLogic {
 
     
     func fetchNotes(request: Notes.GetNotes.Request) {
-        var response: Notes.GetNotes.Response!
-        guard let data = userDefaults.object(forKey: notesKey) as? Data
-        else {return} // обработать ошибку
-        var notes : [NoteModel] = (try? JSONDecoder().decode([NoteModel].self, from: data)) ?? []
-        response.notes = notes.isEmpty ? notes : [defaultNote]
+        var response = Notes.GetNotes.Response(notes: localTempStorage)
+        response.notes?.append(defaultNote)
+        
+        print("WORKER")
+        print(response.notes)
+        print("WORKER")
         
         presenter = NotesPresenter()
         presenter?.presentNotes(response: response)
