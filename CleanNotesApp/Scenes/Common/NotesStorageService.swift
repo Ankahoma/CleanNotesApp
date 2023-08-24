@@ -36,18 +36,9 @@ extension NotesStorageService: NotesStorageLogic {
         userDefaults.set(localTempStorage, forKey:  notesKey)
     }
     
-
-    
     func fetchNotes(request: Notes.GetNotes.Request) -> [NoteModel] {
         var response = Notes.GetNotes.Response(notes: localTempStorage)
         response.notes?.append(defaultNote)
-        
-        print("WORKER")
-        print(response.notes)
-        print("WORKER")
-        
-//        presenter = NotesPresenter()
-//        presenter?.presentNotes(response: response)
         return(response.notes!)
     }
  
