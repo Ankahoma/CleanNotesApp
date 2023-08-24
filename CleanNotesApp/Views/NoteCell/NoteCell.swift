@@ -40,8 +40,10 @@ class NoteCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(data: [NoteModel]) {
-        
+    func setup(data: NoteModel) {
+        titleLabel.text = data.title
+        bodyLabel.text = data.body
+        dateLabel.text = ""
     }
     
 }

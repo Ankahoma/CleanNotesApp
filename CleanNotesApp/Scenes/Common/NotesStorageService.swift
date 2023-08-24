@@ -11,7 +11,7 @@ import UIKit
 protocol NotesStorageLogic {
     func saveNote(_ note: NoteModel)
     func removeNote(_ indexPath: IndexPath)
-    func fetchNotes(request: Notes.GetNotes.Request)
+    func fetchNotes(request: Notes.GetNotes.Request) -> [NoteModel]
 }
 
 class NotesStorageService {
@@ -38,7 +38,7 @@ extension NotesStorageService: NotesStorageLogic {
     
 
     
-    func fetchNotes(request: Notes.GetNotes.Request) {
+    func fetchNotes(request: Notes.GetNotes.Request) -> [NoteModel] {
         var response = Notes.GetNotes.Response(notes: localTempStorage)
         response.notes?.append(defaultNote)
         
@@ -46,9 +46,9 @@ extension NotesStorageService: NotesStorageLogic {
         print(response.notes)
         print("WORKER")
         
-        presenter = NotesPresenter()
-        presenter?.presentNotes(response: response)
-        
+//        presenter = NotesPresenter()
+//        presenter?.presentNotes(response: response)
+        return(response.notes!)
     }
  
 }

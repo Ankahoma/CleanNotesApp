@@ -13,9 +13,9 @@ protocol NotesDisplayLogic: AnyObject {
 
 class NotesViewController: UIViewController {
     @IBOutlet var notesTableView: UITableView!
+    private var notesToDisplay: [NoteModel]?
     
-    private var notesToDisplay: [NoteModel] = []
-    private var interactor: NotesBusinessLogic?
+    var interactor: NotesBusinessLogic?
     var router: (NSObjectProtocol & NotesRoutingLogic & NotesDataPassing)?
     
     // MARK: Object lifecycle
@@ -45,6 +45,9 @@ class NotesViewController: UIViewController {
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
+       
+        
+        
     }
     
     // MARK: Routing
@@ -63,6 +66,7 @@ class NotesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getNotesData()
+        
         notesTableView.register(UINib(nibName: "NoteCell", bundle: nil), forCellReuseIdentifier: NoteCell.identifier)
         
     }
@@ -78,12 +82,14 @@ class NotesViewController: UIViewController {
 }
 
 extension NotesViewController: NotesDisplayLogic {
+    
     func displayNotes(viewModel: Notes.GetNotes.ViewModel) {
         
-        print("VCONTROLLER")
-        print(viewModel.notes)
-        print("VCONTROLLER")
-        //nameTextField.text = viewModel.name
+        if(viewModel.notes != nil) {
+            notesToDisplay = viewModel.notes
+            self.notesTableView.reloadData()
+        }
+        
     }
 }
 
@@ -92,13 +98,16 @@ extension NotesViewController: NotesDisplayLogic {
 extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //        return dataToDisplay?.count
-        return notesToDisplay.count
+        return notesToDisplay?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let noteCell = tableView.dequeueReusableCell(
             withIdentifier: NoteCell.identifier, for: indexPath) as? NoteCell
         else { return UITableViewCell() }
+        if let note = notesToDisplay?[indexPath.row] {
+            noteCell.setup(data: note)
+        }
         
         return noteCell
     }

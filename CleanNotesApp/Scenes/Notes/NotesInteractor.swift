@@ -14,7 +14,7 @@ protocol NotesBusinessLogic {
 }
 
 protocol NotesDataStore {
-    //  var defaultNote: NoteModel { get }
+    
 }
 
 class NotesInteractor {
@@ -31,13 +31,8 @@ extension NotesInteractor: NotesBusinessLogic {
     
     func fetchNotes(request: Notes.GetNotes.Request) {
         worker = NotesStorageService()
-        worker?.fetchNotes(request: request)
-        var response: Notes.GetNotes.Response!
-//        print("INTERACTOR")
-//        print(response.notes)
-//        print("INTERACTOR")
-        
-//        presenter?.presentNotes(response: response)
+        let response = Notes.GetNotes.Response(notes: (worker?.fetchNotes(request: request)))
+        presenter?.presentNotes(response: response)
     }
 }
 
